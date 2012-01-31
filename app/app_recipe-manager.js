@@ -13,24 +13,42 @@ var host = window.location.protocol+"//tiddlyspace.com",
 		});*/
 	init = function() {
 		$('#spaceSubmit').click(function() {
-			var name = $('#space').val()+"_public",
-				recipe = new TiddlyWeb.Recipe(name, host);
-			recipe.get(function(r) {
-				console.log(r);
+			var name = $('#space').val(),
+				public_recipe = new TiddlyWeb.Recipe(name+"_public", host),
+				private_recipe = new TiddlyWeb.Recipe(name+"_private", host);
+			$('#public').val("loading...");
+			$('#private').val("loading...");
+			public_recipe.get(function(r) {
+				console.log('public',r);
 				listRecipe('#public', r);
 			}, function() {
 				console.log('fail', arguments);
 			});
+			private_recipe.get(function(r) {
+				console.log('private',r);
+				listRecipe('#private', r);
+			}, function() {
+				console.log('fail', arguments);
+			});			
 		});
 		
 		$('#publicSubmit').click(function() {
 			var name = $('#space').val()+"_public",
 				recipe = new TiddlyWeb.Recipe(name, host),
-				r = [],
-				bags = $('#public').val().split('\n');
-			$.each(bags, function(i, bag) {
-				r.push([bag, ""]);
+				r = readRecipe('#public');
+			recipe.recipe = r;
+			console.log(r);
+			recipe.put(function() {
+				console.log('succesPUT', arguments);
+			}, function() {
+				console.log('errPUT', arguments);
 			});
+		});
+
+		$('#privateSubmit').click(function() {
+			var name = $('#space').val()+"_private",
+				recipe = new TiddlyWeb.Recipe(name, host),
+				r = readRecipe('#private');
 			recipe.recipe = r;
 			console.log(r);
 			recipe.put(function() {
@@ -46,6 +64,14 @@ var host = window.location.protocol+"//tiddlyspace.com",
 			bags.push(item[0]);
 		});
 		$(elem).val(bags.join('\n'));
+	},
+	readRecipe = function(elem) {
+		var recipe = [],
+			bags = $(elem).val().split('\n');
+		$.each(bags, function(i, bag) {
+			recipe.push([bag, ""]);
+		});
+		return recipe;
 	};
 
 $(document).ready(function() {

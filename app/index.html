@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Recipe Manager (attempt)</title>
+		<title>TiddlySpace Recipe Manager</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="reset.css" />
 		<link rel="stylesheet" type="text/css" href="jbase.css" />
@@ -11,18 +11,23 @@
 	</head>
 	<body>
 		<div id="wrapper">
-			<h1>TiddlySpace Recipe Manager</h1>
+			<h1>TiddlySpace Recipe Manager (v0.2)</h1>
 			<p>Constraints:</p>
 			<ul>
 				<li>Doesn't handle filters on bags</li>
 				<li>It doesn't tell you if you can't edit the space</li>
+				<li class="strikethrough">Doesn't handle private recipes</li>
 				<li>There is no error handling</li>
+				<li>Doesn't check recipe for correct syntax</li>
+				<li>Doesn't check for existence of bags in recipe</li>
 			</ul>
 			<label for="space">Space: </label>
 			<input type="text" name="space" id="space" />
 			<button type="submit" id="spaceSubmit">Get recipes</button>
 			<textarea id="public">public recipe here...</textarea>
 			<button id="publicSubmit">save public</button>
+			<textarea id="private">private recipe here...</textarea>
+			<button id="privateSubmit">save private</button>
 		</div><!-- end #wrapper -->
 		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" src="chrjs.js"></script>
