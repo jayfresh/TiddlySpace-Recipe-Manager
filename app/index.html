@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Recipe Manager (attempt)</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="reset.css" />
+		<link rel="stylesheet" type="text/css" href="jbase.css" />
+		<link rel="stylesheet" type="text/css" href="grid.css" />
+		<link rel="stylesheet" type="text/css" href="stickyfooter.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<h1>TiddlySpace Recipe Manager</h1>
+			<p>Constraints:</p>
+			<ul>
+				<li>Doesn't handle filters on bags</li>
+				<li>It doesn't tell you if you can't edit the space</li>
+				<li>There is no error handling</li>
+			</ul>
+			<label for="space">Space: </label>
+			<input type="text" name="space" id="space" />
+			<button type="submit" id="spaceSubmit">Get recipes</button>
+			<textarea id="public">public recipe here...</textarea>
+			<button id="publicSubmit">save public</button>
+		</div><!-- end #wrapper -->
+		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="chrjs.js"></script>
+		<script type="text/javascript" src="jquery-json.min.js"></script>
+		<script type="text/javascript" src="iframe-comms.js"></script>
+		<script type="text/javascript" src="app_recipe-manager.js"></script>
+	</body>
+</html>
