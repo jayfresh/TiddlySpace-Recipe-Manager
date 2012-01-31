@@ -1,0 +1,3 @@
+Run at http://recipe-manager.tiddlyspace.com/index.html
+
+Takes a query parameter to pre-populate space choice e.g. http://recipe-manager.tiddlyspace.com/index.html?space=ambit-theme-v3-test?my-space
